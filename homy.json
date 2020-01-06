@@ -1,0 +1,19 @@
+{
+    "_id": "5e023c925a9bf61ee8380010",
+    "carousel": [
+        "https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+        "https://images.unsplash.com/photo-1531804055935-76f44d7c3621?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+        "https://images.unsplash.com/photo-1525638444472-9ff1abaa6e09?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
+    ],
+    "title":[
+        "First slide",
+        "Second slide",
+        "Third slide"
+    ],
+    "desc": "Welcome to Kenichi Woodworking. We design and produce custom modern and creative furniture and accessories. All our products are handcrafted in the Rocky Mountains of Colorado. Great care, love and soul go into everything we make - our products are of the highest quality and built to the highest of standards. We strive to use finishes free of nasty chemicals and VOCs. We are a partner with Eden Reforestation Projects - a 501 (c)(3) that plants millions of trees every year. A portion of our profits go towards supporting their efforts worldwide.",
+    "photo": [
+        "https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+        "https://images.unsplash.com/photo-1531804055935-76f44d7c3621?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
+    ],
+    "__v": 0
+}
