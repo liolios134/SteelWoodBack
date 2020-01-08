@@ -45,11 +45,18 @@ const updateProduct = (req, res) => {
     });
 };
 
+const getCategoryProduct = (req , res) => {
+
+    Product.find({category: req.params.categoryId}, (err, products) => {
+        res.json(products);
+    });
+};
 
 module.exports = {
     list,
     getOne,
     create,
     deleteProduct,
-    updateProduct
+    updateProduct,
+    getCategoryProduct
 };

@@ -9,7 +9,8 @@ global.Product = mongoose.model("Product", {
     title: String,
     desc: String,
     photo: String,
-    price: Number
+    price: Number,
+    category: mongoose.Types.ObjectId
 });
 
 global.About = mongoose.model("About", {
@@ -33,3 +34,13 @@ global.Department = mongoose.model("Department", {
     latitude: Number,
     longitude: Number
 })
+
+global.User = mongoose.model("User", {
+    firstName: String,
+    lastName: String,
+    email: String
+})
+
+global.Category = mongoose.model("Category" , {
+    title: String
+});
