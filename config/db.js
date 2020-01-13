@@ -8,8 +8,10 @@ mongoose.connect(process.env.MONGO_URI, {
 global.Product = mongoose.model("Product", {
     title: String,
     desc: String,
+    miniDesc: String,
     photo: String,
     price: Number,
+    sale: Number,
     category: mongoose.Types.ObjectId
 });
 

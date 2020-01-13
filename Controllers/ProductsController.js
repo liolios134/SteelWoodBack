@@ -12,10 +12,13 @@ const getOne = (req, res) => {
 
 const create = (req, res) => {
     const p = new Product({
+        category: req.body.category,
         title: req.body.title,
         desc: req.body.desc,
+        miniDesc: req.body.miniDesc,
         photo: req.body.photo,
-        price: req.body.price
+        price: req.body.price,
+        sale: req.body.sale
     });
     p.save().then(() => {
         res.json({
@@ -34,10 +37,13 @@ const deleteProduct = (req, res) => {
 
 const updateProduct = (req, res) => {
     Product.updateOne({_id: req.params.productId} , {
+        category: req.body.category,
         title: req.body.title,
         desc: req.body.desc,
+        miniDesc: req.body.miniDesc,
         photo: req.body.photo,
-        price: req.body.price
+        price: req.body.price,
+        sale: req.body.sale
     }, (err) =>{
         res.json({
             message: "Product successfully updated"
