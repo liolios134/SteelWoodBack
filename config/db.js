@@ -12,7 +12,10 @@ global.Product = mongoose.model("Product", {
     photo: String,
     price: Number,
     sale: Number,
-    category: mongoose.Types.ObjectId
+    category: {
+        type: mongoose.Types.ObjectId,
+        ref: "Category"
+    }
 });
 
 global.About = mongoose.model("About", {
