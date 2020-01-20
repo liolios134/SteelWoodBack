@@ -37,11 +37,13 @@ app.get("/", (req, res) => {
 
 //products router
 app.get("/products", ProductsController.list);
+app.post("/products/cart", ProductsController.cartList);
 app.get("/products/:productId", ProductsController.getOne);
 app.post("/products", ProductsController.create);
 app.delete("/products/:productId", ProductsController.deleteProduct);
 app.put("/products/:productId", ProductsController.updateProduct);
 app.get("/products/category/:categoryId" , ProductsController.getCategoryProduct);
+
 
 
 app.get("/homy", (req, res) => {
