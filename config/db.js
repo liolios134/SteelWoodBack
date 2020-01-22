@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("mongoose-bcrypt");
 
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
@@ -33,18 +34,26 @@ global.Contact = mongoose.model("Contact", {
     email: String,
     conPara: String
 })
-
-global.Department = mongoose.model("Department", {
+const departmentSchema = mongoose.Schema({
     department: String,
     latitude: Number,
     longitude: Number
-})
+},
+{
+    timestamps:true
+});
+global.Department = mongoose.model("Department", departmentSchema);
 
-global.User = mongoose.model("User", {
-    firstName: String,
-    lastName: String,
-    email: String
-})
+const userSchema = mongoose.Schema({
+    firstName: {type: String, required: true},
+    lastName: {type: String, required: true},
+    email: {type: String, required: true, unique: true},
+    password: {type: String, required: true, bcrypt: true}
+}, {
+    timestamps: true
+});
+userSchema.plugin(bcrypt);
+global.User = mongoose.model("User", userSchema);
 
 global.Category = mongoose.model("Category" , {
     title: String

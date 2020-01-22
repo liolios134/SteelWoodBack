@@ -14,11 +14,16 @@ const create = (req, res) => {
     const p = new User({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        email: req.body.email
+        email: req.body.email,
+        password: req.body.password
     });
     p.save().then(() => {
         res.json({
             message: "New user added"
+        });
+    }).catch((err) => {
+        res.json({
+            message: "New user not added"
         });
     });
 };
@@ -35,7 +40,8 @@ const updateUser = (req, res) => {
     User.updateOne({_id: req.params.userId} , {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        email: req.body.email
+        email: req.body.email,
+        password: req.body.password
     }, (err) =>{
         res.json({
             message: "User successfully updated"
