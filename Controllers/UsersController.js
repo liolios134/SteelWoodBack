@@ -1,3 +1,4 @@
+
 const list = (req, res) => {
     User.find({}, (err, users) => {
         res.json(users);
@@ -5,17 +6,21 @@ const list = (req, res) => {
 };
 
 const getOne = (req, res) => {
+
     User.findById(req.params.userId, (err, users) => {
         res.json(users);
     });
 };
+
+
 
 const create = (req, res) => {
     const p = new User({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        role: req.body.role
     });
     p.save().then(() => {
         res.json({
@@ -23,13 +28,14 @@ const create = (req, res) => {
         });
     }).catch((err) => {
         res.json({
-            message: "New user not added"
+            message: "New user not added",
+            error: err
         });
     });
 };
 
 const deleteUser = (req, res) => {
-    User.deleteOne({_id: req.params.userId}, (err) => {
+    User.deleteOne({ _id: req.params.userId }, (err) => {
         res.json({
             message: "User deleted"
         });
@@ -37,12 +43,13 @@ const deleteUser = (req, res) => {
 };
 
 const updateUser = (req, res) => {
-    User.updateOne({_id: req.params.userId} , {
+    User.updateOne({ _id: req.params.userId }, {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
-        password: req.body.password
-    }, (err) =>{
+        password: req.body.password,
+        role: req.body.role
+    }, (err) => {
         res.json({
             message: "User successfully updated"
         });
