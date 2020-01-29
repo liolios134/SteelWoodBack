@@ -25,7 +25,7 @@ const adminLogin = async (req, res) => {
             firstName: user.firstName,
             lastName: user.lastName,
             email: user.email
-        }, 
+        },  
         process.env.JWT_SECRET,
         {expiresIn: process.env.JWT_EXPIRES_IN}
         );

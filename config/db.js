@@ -57,6 +57,14 @@ const userSchema = mongoose.Schema({
 userSchema.plugin(bcrypt);
 global.User = mongoose.model("User", userSchema);
 
-global.Category = mongoose.model("Category" , {
-    title: String
+
+const categorySchema = mongoose.Schema({
+    title: {
+        type:String,
+        required: true,
+        unique: true
+    }
+}, {
+    timestamps:true
 });
+global.Category = mongoose.model("Category" , categorySchema );
