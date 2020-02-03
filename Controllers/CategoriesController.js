@@ -1,13 +1,19 @@
 const list = (req , res) => {
     Category.find({}, (err, categories) => {
-        res.json(categories);
+        res.json({
+            success: true,
+            categories: categories
+        });
     });
 };
 
 const getOne = (req , res) => {
 
-    Category.findById(req.params.categoryId, (err, categories) => {
-        res.json(categories);
+    Category.findById(req.params.categoryId, (err, category) => {
+        res.json({
+            success: true,
+            category: category
+        });
     });
 };
 
@@ -17,6 +23,7 @@ const create = (req , res ) => {
     });
     u.save().then(() => {
         res.json({
+            success: true,
             message: "Category created"
         });
     });
@@ -25,7 +32,10 @@ const create = (req , res ) => {
 const deleteCategory = (req , res) => {
 
     Category.deleteOne({_id: req.params.categoryId}, (err) => {
-        res.json({message: "category deleted"});
+        res.json({
+            success:true,
+            message: "category deleted"
+        });
     });
 };
 
@@ -34,7 +44,10 @@ const updateCategory = (req , res) => {
     Category.updateOne({_id: req.params.categoryId}, {
         title: req.body.title,
     } , (err) => {
-        res.json({message: "category updated"});
+        res.json({
+            success:true,
+            message: "category updated"
+        });
     });
 };
 

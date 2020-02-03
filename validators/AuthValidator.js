@@ -6,9 +6,9 @@ const checkErrors = require('./result');
 
 const login = [
     // username must be an email
-    check("email").isEmail(),
+    check("email").isEmail().withMessage("Invalid value at email field"),
     // password must be at least 5 chars long
-    check('password').isLength({ min: 3 }),
+    check('password').isLength({ min: 3 }).withMessage("Password must be at least 3 characters"),
     checkErrors
 ];
 

@@ -4,25 +4,35 @@ const list = async (req, res) => {
     const products = await Product.find({})
     .populate("category")
     .exec();
-  res.json(products);
+  res.json({
+          success:true,
+          products: products
+      });
 };
 
 const cartList = async (req, res) => {
     const products = await Product.find({_id: req.body.productIds}, "title price photo")
     .exec();
-  res.json(products);
+    res.json({
+        success:true,
+        products: products
+    });
 };
 
 const getOne = async (req, res) => {
     if(mongoose.Types.ObjectId.isValid(req.params.productId)){
-        const products = await Product
+        const product = await Product
     .findById(req.params.productId)
     .populate("category")
     .exec();
 
-    res.json(products);
+    res.json({
+        success:true,
+        product: product
+    });
     } else{
         res.json({
+            success: false,
             message:"Product not found"
         });
     }
@@ -42,6 +52,7 @@ const create = async (req, res) => {
     });
     await p.save();
         res.json({
+            success: true,
             message: "New product added"
         });
 };
@@ -52,7 +63,8 @@ const deleteProduct = async (req, res) => {
      .exec();
      
      res.json({
-            message: "Product deleted"
+        success: true,
+        message: "Product deleted"
     });
 };
 
@@ -67,7 +79,10 @@ const updateProduct = async (req, res) => {
         sale: req.body.sale
     }).exec();
 
-    res.json({message: "Product successfully updated"});
+    res.json({
+        success:true,
+        message: "Product successfully updated"
+    });
 };
 
 const getCategoryProduct = async (req , res) => {
