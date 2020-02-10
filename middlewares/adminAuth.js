@@ -32,7 +32,8 @@ const AdminAuth = async (req, res, next) => {
             message: "Forbidden Access"
         });
     }
-
+    req.user = user;
+    
     next();
 };
 
