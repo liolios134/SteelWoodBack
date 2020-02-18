@@ -46,7 +46,7 @@ const create = async (req, res) => {
         title: req.body.title,
         desc: req.body.desc,
         miniDesc: req.body.miniDesc,
-        photo: req.body.photo,
+        photo: req.file.filename,
         price: req.body.price,
         sale: req.body.sale
     });

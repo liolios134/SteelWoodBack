@@ -1,6 +1,8 @@
 const express = require("express");
 const path = require("path");
 const route = express.Router();
+const MailController = require("../controllers/MailController");
+const UploadController = require("../controllers/UploadController");
 
 
 route.get("/", (req, res) => {
@@ -13,5 +15,8 @@ route.get("/", (req, res) => {
 
 route.use("/admin", require("./admin/admin"));
 route.use("/client", require("./client/client"));
+
+route.get("/mail", MailController.mailSend);
+route.post("/upload", upload.single("avatar"), UploadController.uploadPhoto);
 
 module.exports = route;
