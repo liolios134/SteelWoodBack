@@ -1,21 +1,29 @@
-const list = (req , res) => {
-    Category.find({}, (err, categories) => {
-        res.json({
+const list = async (req , res) => {
+    const categories = await Category.find({}).exec();
+        return res.json({
             success: true,
             categories: categories
-        });
     });
 };
 
-const getOne = (req , res) => {
+const getOne = async (req , res) => {
+    const category = await Category.findById(req.params.categoryId).exec();
+                     return res.json({
+                        success: true,
+                        category: category,
+                        product: product
+                     });
+    };
 
-    Category.findById(req.params.categoryId, (err, category) => {
-        res.json({
-            success: true,
-            category: category
-        });
+const getCategoryProducts = async (req, res) => {
+    const category = await Category.findById(req.params.categoryId).exec();
+    const products = await Product.find({category: req.params.categoryId}).exec();
+    return res.json({
+        success:true,
+        category: category,
+        products: products
     });
-};
+}
 
 const create = (req , res ) => {
     const u = new Category({
@@ -56,5 +64,6 @@ module.exports = {
     getOne,
     create,
     deleteCategory,
-    updateCategory
+    updateCategory,
+    getCategoryProducts
 };

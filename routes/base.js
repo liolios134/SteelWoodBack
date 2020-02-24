@@ -19,4 +19,11 @@ route.use("/client", require("./client/client"));
 route.get("/mail", MailController.mailSend);
 route.post("/upload", upload.single("avatar"), UploadController.uploadPhoto);
 
+route.use((req, res) => {
+    return res.json({
+        success: false,
+        message: "Page not found"
+    })
+})
+
 module.exports = route;

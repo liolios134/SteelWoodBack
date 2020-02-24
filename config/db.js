@@ -11,6 +11,7 @@ global.Product = mongoose.model("Product", {
     desc: String,
     miniDesc: String,
     photo: String,
+    gallery: [String],
     price: Number,
     sale: Number,
     category: {

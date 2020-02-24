@@ -4,7 +4,7 @@ const list = async (req, res) => {
     const products = await Product.find({})
     .populate("category")
     .exec();
-  res.json({
+    res.json({
           success:true,
           products: products
       });
@@ -76,7 +76,8 @@ const updateProduct = async (req, res) => {
         miniDesc: req.body.miniDesc,
         photo: req.body.photo,
         price: req.body.price,
-        sale: req.body.sale
+        sale: req.body.sale,
+        gallery: req.body.gallery
     }).exec();
 
     res.json({
